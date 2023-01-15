@@ -1,0 +1,10 @@
+.profile-form__button-close {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/Close_Icon.png);
+  background-color: transparent;
+  border: none;
+  right: -40px;
+  top: -40px;
+}

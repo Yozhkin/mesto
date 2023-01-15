@@ -22,3 +22,15 @@
 @import url(../blocks/elements/__title/elements__title.css);
 @import url(../blocks/elements/__like/elements__like.css);
 
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/profile-form/profile-form.css);
+@import url(../blocks/profile-form/__title/profile-form__title.css);
+@import url(../blocks/profile-form/__input/profile-form__input.css);
+@import url(../blocks/profile-form/__input-text/profile-form__input-text.css);
+@import url(../blocks/profile-form/__button-save/profile-form__button-save.css);
+@import url(../blocks/profile-form/__botton-close/profile-form__button-close.css);
+
+@import url(../blocks/botton_style-hover/botton_style-hover.css);
+
