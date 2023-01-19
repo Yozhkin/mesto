@@ -1,8 +1,8 @@
-.botton_style_hover {
+.button-hover {
   transition: opacity .4s ease-in;
   cursor: pointer;
 }
 
-.botton_style_hover:hover {
+.button-hover:hover {
   opacity: .6;
 }

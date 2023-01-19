@@ -1,15 +1,15 @@
 .profile__info {
   color: #fff;
   display: inherit;
-  gap: 16px;
+  gap: 10px;
   align-self: center;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-right: 18px;
 }
 
 @media screen and (max-width: 760px) {
   .profile__info {
-    gap: 14;
+    gap: 5px;
   }
 }
 
