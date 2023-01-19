@@ -6,5 +6,17 @@
   border: 2px solid #fff;
   width: 24px;
   height: 24px;
-  align-self: end;
+  margin-top: 37px;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 760px) {
+  .profile__edit-button {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 156px;
+    right: 19px;
+    margin: 0;
+  }
 }

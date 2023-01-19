@@ -1,8 +1,15 @@
 .profile__info {
   color: #fff;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 39px 18px;
-  gap: 16px 18px;
+  display: inherit;
+  gap: 16px;
   align-self: center;
+  margin-left: 30px;
+  margin-right: 18px;
 }
+
+@media screen and (max-width: 760px) {
+  .profile__info {
+    gap: 14;
+  }
+}
+
