@@ -3,9 +3,6 @@
   width: 22px;
   height: 19px;
   background-image: url(../../../images/Like.png);
-  position: absolute;
-  right: 20px;
-  bottom: 30px;
   border: none;
   background-color: #fff;
 }
