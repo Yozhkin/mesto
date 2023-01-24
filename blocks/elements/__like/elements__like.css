@@ -2,8 +2,17 @@
   padding: 0;
   width: 22px;
   height: 19px;
-  background-image: url(../../../images/Like.png);
+  background-image: url(../../../images/like.svg);
   border: none;
   background-color: #fff;
+  transition: opacity .4s ease-in;
+  cursor: pointer;
 }
 
+.elements__like:hover {
+  opacity: .5;
+}
+
+.elements__like:active {
+  background-image: url(../../../images/like_dark.svg);
+}
