@@ -26,9 +26,11 @@
       <button class="profile__edit-button button-hover" type="button" aria-label="Открыть" ></button>
       <button class="profile__add-button button-hover" type="button" aria-label="Добавить"></button>
     </section>
-
     <section class="elements">
-      <ul class="elements__cards">
+      <ul class="elements__cards"></ul>
+    </section>
+
+  <!-- <ul class="elements__cards">
         <li class="elements__card">
           <img class="elements__foto" src="./images/Карачаевск.jpg" alt="Ваше фото">
           <div class="elements__block">
@@ -72,14 +74,14 @@
           </div>
         </li>
       </ul>
-    </section>
+    </section> -->
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
+  <!-- <div class="popup">
     <div class="popup__container">
       <button class="popup__button-close button-hover" type="button"></button>
       <form class="popup__form" rel="profile" name="popupInputForm">
@@ -89,7 +91,30 @@
         <button class="popup__button-save" type="submit">Сохранить</button>
       </form>
     </div>
+  </div> -->
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__button-close button-hover" type="button"></button>
+      <form class="popup__form" rel="profile" name="popupInputForm">
+        <h3 class="popup__title">Новое место</h3>
+        <input type="text" name="name" placeholder="Название" class="popup__input_type_title popup__input">
+        <input type="text" name="about" placeholder="Ссылка на картинку" class="popup__input_type_link popup__input">
+        <button class="popup__button-save" type="submit">Создать</button>
+      </form>
+    </div>
   </div>
+
+  <template id="template-cards">
+    <li class="elements__card">
+      <img class="elements__foto" src="#" alt="Ваше фото">
+      <div class="elements__block">
+        <h3 class="elements__title"></h3>
+        <button class="elements__like" type="button"></button>
+      </div>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>
