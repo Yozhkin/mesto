@@ -78,29 +78,7 @@ initialCards.forEach(function(card) {
 
 
 
-// const createCard = function(item) {
-//   const card = templateCard.cloneNode(true);
-//   card.querySelector('.elements__title').textContent = item.name;
-//   card.querySelector('.elements__foto').src = item.link;
-//
-//   delBtnElement.addEventListener('click', function(event) {
-//     event.target.closest('.elements__card');
-//     delBtnElement.remove()
-//   });
-//
 
-//
-//   return card;
-// };
-//
-// const renderCard = function(item) {
-//   cardsBlock.append(createCard(item));
-// };
-//
-//  initialCards.forEach(function(item) {
-//    renderCard(item);
-//    });
-//
 // // Функция открытия popup
 // function openPopup() {
 //   popupInputNameElement.value = profileNameElement.textContent;
@@ -133,5 +111,5 @@ initialCards.forEach(function(card) {
 // popupButtonCloseElement.addEventListener('click', closePopup);
 // formElement.addEventListener('submit', handleFormSubmit);
 //
-// // popupElement.addEventListener('click', closePopupByClickOverlay);
-//
+// popupElement.addEventListener('click', closePopupByClickOverlay);
+
