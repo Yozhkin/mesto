@@ -1,4 +1,4 @@
-.elements__cards {
+.elements__container {
   margin: 0;
   padding: 0;
   display: grid;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 760px) {
-  .elements__cards {
+  .elements__container {
     grid-template-columns: 282px;
     justify-content: center;
   }

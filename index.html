@@ -27,7 +27,7 @@
       <button class="profile__add-button button-hover" type="button" aria-label="Добавить"></button>
     </section>
     <section class="elements">
-      <ul class="elements__cards"></ul>
+      <ul class="elements__container"></ul>
     </section>
 
   <!-- <ul class="elements__cards">
@@ -107,10 +107,11 @@
 
   <template id="template-cards">
     <li class="elements__card">
-      <img class="elements__foto" src="#" alt="Ваше фото">
+      <img class="elements__foto" src="#" alt="">
       <div class="elements__block">
         <h3 class="elements__title"></h3>
         <button class="elements__like" type="button"></button>
+        <button class="elements__del-btn" type="button"></button>
       </div>
     </li>
   </template>
