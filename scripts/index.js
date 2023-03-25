@@ -49,7 +49,7 @@ const formAddCardElement = popupAddCardElement.querySelector('#popup_form_addcar
 // Зум фото
 const popupZoomElement = document.querySelector('.popup_zoom');
 const popupZoomImg = popupZoomElement.querySelector('.popup__foto');
-const popupZoomTitle = popupZoomElement.querySelector('.popup__title_foto');
+const popupZoomTitle = popupZoomElement.querySelector('.popup__foto-caption');
 
 // контейнер с картами(фото)
 const cardsContainer = document.querySelector('.elements__container');
