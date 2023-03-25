@@ -25,7 +25,7 @@ const initialCards = [
   }
 ];
 
-const popupElement = document.querySelector('.popup');
+const popupElement = document.querySelectorAll('.popup');
 const profileNameElement = document.querySelector('.profile__user-name');
 const profileJobElement = document.querySelector('.profile__about-user');
 
@@ -45,6 +45,11 @@ const popupAddCardElement = document.querySelector('.popup_addcard');
 const popupInputTitleCard = popupAddCardElement.querySelector('.popup__input_type_title');
 const popupInputLinkCard = popupAddCardElement.querySelector('.popup__input_type_link');
 const formAddCardElement = popupAddCardElement.querySelector('#popup_form_addcard');
+
+// Зум фото
+const popupZoomElement = document.querySelector('.popup_zoom');
+const popupZoomImg = popupZoomElement.querySelector('.popup__foto');
+const popupZoomTitle = popupZoomElement.querySelector('.popup__title_foto');
 
 // контейнер с картами(фото)
 const cardsContainer = document.querySelector('.elements__container');
@@ -76,6 +81,13 @@ function createCard(data) {
   const likeBtn = newCard.querySelector('.elements__like');
     likeBtn.addEventListener('click', (evt) => {
       evt.target.classList.toggle('elemetns__like_added');
+  });
+
+  const zoomFoto = newCard.querySelector('.elements__foto');
+  zoomFoto.addEventListener('click', () => {
+    popupZoomImg.src = newCard.src = data.link;
+    popupZoomTitle.textContent = newCard.alt = data.name;
+    openPopup(popupZoomElement)
   });
 
   return newCard;
