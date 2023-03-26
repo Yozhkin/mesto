@@ -62,16 +62,17 @@ function openPopup(popup) {
 
 //Функция закрытия попап
 function closePopup(popup) {
-  const openedPopup = popup.target.closest('.popup');
-  openedPopup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 };
 
 // Создаем карточку
 function createCard(data) {
   const newCard = templateCard.cloneNode(true);
-  newCard.querySelector('.elements__title').textContent = data.name;
-  newCard.querySelector('.elements__foto').src = data.link;
-  newCard.querySelector('.elements__foto').alt = data.name;
+  const elementTitle = newCard.querySelector('.elements__title');
+  const elementFoto = newCard.querySelector('.elements__foto');
+  elementTitle.textContent = data.name;
+  elementFoto.src = data.link;
+  elementFoto.alt = data.name;
 
   const deleteBtn = newCard.querySelector('.elements__del-btn');
     deleteBtn.addEventListener('click', (evt) => {
@@ -86,7 +87,8 @@ function createCard(data) {
   const zoomFoto = newCard.querySelector('.elements__foto');
   zoomFoto.addEventListener('click', () => {
     popupZoomImg.src = newCard.src = data.link;
-    popupZoomTitle.textContent = newCard.alt = data.name;
+    popupZoomImg.alt = newCard.alt = data.name;
+    popupZoomTitle.textContent = newCard.name = data.name;
     openPopup(popupZoomElement)
   });
 
@@ -113,7 +115,7 @@ function handleFormSubmitCard(evt) {
   evt.preventDefault();
   const card  = {name: popupInputTitleCard.value, link: popupInputLinkCard.value};
   renderCard(card);
-  closePopup(evt);
+  closePopup(popupAddCardElement);
 };
 
 formAddCardElement.addEventListener('submit', handleFormSubmitCard);
@@ -130,16 +132,15 @@ function handleFormSubmitProfile(evt) {
   evt.preventDefault();
   profileNameElement.textContent = popupInputNameElement.value;
   profileJobElement.textContent = popupInputJobElement.value;
-  closePopup(evt);
+  closePopup(popupProfileElement);
 };
 
 formProfileElement.addEventListener('submit', handleFormSubmitProfile);
 
 // закрытие попап на крестик
-popupButtonCloseElement.forEach((popupButtonCloseElement) =>
-  popupButtonCloseElement.addEventListener('click', closePopup));
-
-
-
-
-
+popupButtonCloseElement.forEach((buttonsClosePopup) =>
+  buttonsClosePopup.addEventListener('click', () => {
+    closePopup(popupProfileElement);
+    closePopup(popupAddCardElement);
+    closePopup(popupZoomElement);
+  }));
