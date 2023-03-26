@@ -115,6 +115,8 @@ function handleFormSubmitCard(evt) {
   evt.preventDefault();
   const card  = {name: popupInputTitleCard.value, link: popupInputLinkCard.value};
   renderCard(card);
+  popupInputTitleCard.value = '';
+  popupInputLinkCard.value = '';
   closePopup(popupAddCardElement);
 };
 
