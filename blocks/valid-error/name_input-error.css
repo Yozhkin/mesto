@@ -1,0 +1,12 @@
+.name_input-error {
+  position: absolute;
+  top: 145px;
+  left: 36px;
+}
+
+@media screen and (max-width: 760px) {
+  .name_input-error {
+    top: 148px;
+    left: 22px;
+  };
+};

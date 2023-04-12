@@ -1,0 +1,12 @@
+.about_input-error {
+  position: absolute;
+  top: 203px;
+  left: 36px;
+}
+
+@media screen and (max-width: 760px) {
+  .about_input-error {
+    top: 206px;
+    left: 22px;
+  }
+};
