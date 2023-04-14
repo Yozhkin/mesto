@@ -38,14 +38,14 @@ function checkInputValidity(inputElement, {inputErrorClass, errorClass}) {
   };
 
 function showInputError(inputElement, errorMessage, {inputErrorClass, errorClass}) {
-  const errorElement = document.querySelector(`.${inputElement.id}-error`);
+  const errorElement = document.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 };
 
 function hideInputError(inputElement, {inputErrorClass, errorClass}) {
-  const errorElement = document.querySelector(`.${inputElement.id}-error`);
+  const errorElement = document.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = '';

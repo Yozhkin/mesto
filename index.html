@@ -43,9 +43,9 @@
       <form class="popup__form" rel="profile" name="form" id="popup_form_profile" novalidate>
         <h3 class="popup__title">Редактировать профиль</h3>
         <input type="text" name="name" placeholder="Ваше имя" id="name_input" class="popup__input_type_name popup__input" minlength="2" maxlength="200" required>
-        <span class="popup__error-name name_input-error" type="error"></span>
+        <span class="popup__error-name" id="name_input-error" type="error"></span>
         <input type="text" name="about" placeholder="О себе" id="about_input" class="popup__input_type_job popup__input" minlength="2" maxlength="200" required>
-        <span class="popup__error-about about_input-error" type="error"></span>
+        <span class="popup__error-about" id="about_input-error" type="error"></span>
         <button class="popup__button-save popup__button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -57,9 +57,9 @@
       <form class="popup__form" rel="profile" name="form" id="popup_form_addcard" novalidate>
         <h3 class="popup__title">Новое место</h3>
         <input type="text" name="card-name" placeholder="Название" id="card-name_input" class="popup__input_type_title popup__input" minlength="2" maxlength="30" required>
-        <span class="popup__error-card-name card-name_input-error" type="error"></span>
+        <span class="popup__error-card-name" id="card-name_input-error" type="error"></span>
         <input type="url" name="card_link" placeholder="Ссылка на картинку" id="card-url_input" class="popup__input_type_link popup__input" required>
-        <span class="popup__error-card-url card-url_input-error" type="error"></span>
+        <span class="popup__error-card-url" id="card-url_input-error" type="error"></span>
         <button class="popup__button-save popup__button" type="submit">Создать</button>
       </form>
     </div>
