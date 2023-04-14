@@ -1,12 +1,12 @@
-.popup__about_input-error {
+.popup__error-card-name {
   position: absolute;
-  top: 203px;
+  top: 145px;
   left: 36px;
 }
 
 @media screen and (max-width: 760px) {
-  .popup__about_input-error {
-    top: 206px;
+  .popup__error-card-name {
+    top: 148px;
     left: 22px;
   }
 }

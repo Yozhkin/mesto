@@ -4,7 +4,7 @@ const validationConfig = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_message'
+  errorClass: 'popup__error-message'
 };
 
 function enableValidation({formSelector, ...rest}) {

@@ -1,12 +1,12 @@
-.popup__name_input-error {
+.popup__error-about {
   position: absolute;
-  top: 145px;
+  top: 203px;
   left: 36px;
 }
 
 @media screen and (max-width: 760px) {
-  .popup__name_input-error {
-    top: 148px;
+  .popup__error-about {
+    top: 206px;
     left: 22px;
   }
 }
