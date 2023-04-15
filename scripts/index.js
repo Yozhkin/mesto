@@ -1,4 +1,4 @@
-const popupElement = document.querySelectorAll('.popup');
+const popupElements = document.querySelectorAll('.popup');
 const profileNameElement = document.querySelector('.profile__user-name');
 const profileJobElement = document.querySelector('.profile__about-user');
 
@@ -55,7 +55,7 @@ function closePopupByClickOverlay(evt) {
   };
 
 // Закрытие попап overlay
-popupElement.forEach((overlay) => {
+popupElements.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => closePopupByClickOverlay(evt));
 });
 
@@ -69,7 +69,7 @@ function closePopupByEscape(evt) {
 
 // Создаем карточку
 function createCard(data) {
-  const newCard = templateCard.cloneNode(true);
+  const newCard = templateCard.querySelector('.elements__card').cloneNode(true);
   const elementTitle = newCard.querySelector('.elements__title');
   const elementFoto = newCard.querySelector('.elements__foto');
   elementTitle.textContent = data.name;
@@ -86,7 +86,7 @@ function createCard(data) {
       evt.target.classList.toggle('elemetns__like_added');
   });
 
-  const zoomFoto = newCard.querySelector('.elements__foto');
+  const zoomFoto = newCard;
   zoomFoto.addEventListener('click', () => {
     popupZoomImg.src = newCard.src = data.link;
     popupZoomImg.alt = newCard.alt = data.name;
@@ -117,7 +117,7 @@ function handleFormSubmitCard(evt) {
   evt.preventDefault();
   const card  = {name: popupInputTitleCard.value, link: popupInputLinkCard.value};
   renderCard(card);
-  popupAddCardElement.reset();
+  evt.target.reset();
   closePopup(popupAddCardElement);
 };
 
