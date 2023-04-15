@@ -86,7 +86,7 @@ function createCard(data) {
       evt.target.classList.toggle('elemetns__like_added');
   });
 
-  const zoomFoto = newCard;
+  const zoomFoto = elementFoto;
   zoomFoto.addEventListener('click', () => {
     popupZoomImg.src = newCard.src = data.link;
     popupZoomImg.alt = newCard.alt = data.name;
