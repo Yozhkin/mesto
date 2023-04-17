@@ -12,12 +12,16 @@ const popupProfileElement = document.querySelector('.popup_profile');
 const popupInputNameElement = popupProfileElement.querySelector('.popup__input_type_name');
 const popupInputJobElement = popupProfileElement.querySelector('.popup__input_type_job');
 const formProfileElement = popupProfileElement.querySelector('#popup_form_profile');
+const popupProfileInputList = Array.from(popupProfileElement.querySelectorAll('.popup__input'));
+const popupProfileSubmitButton = popupProfileElement.querySelector('.popup__button');
 
 // Попап добавление фото
 const popupAddCardElement = document.querySelector('.popup_addcard');
 const popupInputTitleCard = popupAddCardElement.querySelector('.popup__input_type_title');
 const popupInputLinkCard = popupAddCardElement.querySelector('.popup__input_type_link');
 const formAddCardElement = popupAddCardElement.querySelector('#popup_form_addcard');
+const popupCardInputList = Array.from(popupAddCardElement.querySelectorAll('.popup__input'));
+const popupCardSubmitButton = popupAddCardElement.querySelector('.popup__button');
 
 // Зум фото
 const popupZoomElement = document.querySelector('.popup_zoom');
@@ -105,6 +109,7 @@ function renderCard(data) {
 // Открытие попап карт
 popupButtonAddElement.addEventListener('click', () => {
   openPopup(popupAddCardElement);
+  toggleButton(popupCardInputList, popupCardSubmitButton);
 });
 
 // Добавляем начальные карточки
@@ -128,6 +133,7 @@ popupButtonEditElement.addEventListener('click', () => {
   popupInputNameElement.value = profileNameElement.textContent;
   popupInputJobElement.value = profileJobElement.textContent;
   openPopup(popupProfileElement);
+  toggleButton(popupProfileInputList, popupProfileSubmitButton);
 });
 
 // Сабмит профиля
