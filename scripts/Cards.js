@@ -16,10 +16,26 @@ class Card {
       return cardElement;
   };
 
+  _deleteCard = () => {
+    this._element.remove();
+  };
+
+  _addLike = () => {
+    this._likeButton.classList.toggle('elemetns__like_added');
+  };
+
+  _setEventListener() {
+    this._deleteButton.addEventListener('click', this._deleteCard);
+    this._likeButton.addEventListener('click', this._addLike);
+  };
+
   generateCard() {
     this._element = this._getTemplate();
     this._element.querySelector('.elements__title').textContent = this._name;
     this._element.querySelector('.elements__foto').src = this._link;
+    this._deleteButton = this._element.querySelector('.elements__del-btn');
+    this._likeButton = this._element.querySelector('.elements__like');
+    this._setEventListener();
     return this._element;
   };
 }
