@@ -1,11 +1,4 @@
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error-message'
-};
+import { validationConfig } from "./constants.js";
 
 class FormValidator {
   constructor(config, formElement) {
@@ -15,11 +8,11 @@ class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
+    this._subButton = formElement.querySelector(this._submitButtonSelector);
+    this._inputList = formElement.querySelectorAll(this._inputSelector);
   };
 
   enableValidation() {
-    this._subButton = this._formElement.querySelector(this._submitButtonSelector);
-    this._inputList = this._formElement.querySelectorAll(this._inputSelector);
     this._setEventListener();
   };
 
@@ -40,10 +33,20 @@ class FormValidator {
        return !inputElement.validity.valid})
   };
 
+  _enableSubButton() {
+    this._subButton.classList.remove(this._inactiveButtonClass)
+    this._subButton.disabled = false;
+  };
+
+  _disableSubButton() {
+    this._subButton.classList.add(this._inactiveButtonClass)
+    this._subButton.disabled = true;
+  };
+
   _toggleButton() {
     this._hasInvalidInput()
-    ? this._subButton.classList.add(this._inactiveButtonClass)
-    : this._subButton.classList.remove(this._inactiveButtonClass)
+    ? this._disableSubButton()
+    : this._enableSubButton()
   };
 
   _checkInputValidity(inputElement) {
@@ -52,14 +55,23 @@ class FormValidator {
   };
 
   _setEventListener() {
-    this._toggleButton();
     this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
-        this._toggleButton(this._subButton);
+        this._toggleButton();
       });
     });
   };
+
+  resetValidationState() {
+    this._inputList.forEach(input => {
+      const errorElement = this._formElement.querySelector(`#${input.id}-error`);
+      if(!input.validity.valid) {
+        this._hideInputError(errorElement, input);
+      }
+    })
+    this._toggleButton()
+    };
 };
 
 export { FormValidator, validationConfig};

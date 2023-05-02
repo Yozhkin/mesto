@@ -1,7 +1,6 @@
 class Card {
   constructor(data, templateCard, openPicturePopup) {
     this._data = data;
-    this._name = data.name;
     this._link = data.link;
     this._templateCard = templateCard;
     this._openPicturePopup = openPicturePopup;
@@ -18,7 +17,12 @@ class Card {
 
   _deleteCard = () => {
     this._element.remove();
+    this._likeButton = null;
+    this._deleteButton = null;
+    this._elementPicture = null;
+    this._nameElement = null;
     this._element = null;
+
   };
 
   _toggleLike = () => {
@@ -41,9 +45,9 @@ class Card {
     this._elementPicture = this._element.querySelector('.elements__foto');
     this._deleteButton = this._element.querySelector('.elements__del-btn');
     this._likeButton = this._element.querySelector('.elements__like');
-    this._nameElement.textContent = this._name;
+    this._nameElement.textContent = this._data.name;
     this._elementPicture.src = this._link;
-    this._elementPicture.alt = this._name;
+    this._elementPicture.alt = this._data.name;
     this._setEventListener();
     return this._element;
   };
