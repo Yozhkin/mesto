@@ -3,8 +3,6 @@ import { initialCards,
          popupButtonEditElement,
          formAddCard,
          formProfile,
-         profileJobElement,
-         profileNameElement,
          popupInputJobElement,
          popupInputNameElement,
          popupInputLinkCard,
@@ -15,6 +13,7 @@ import { FormValidator, validationConfig } from '../components/FormValidator.js'
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
 //--------------------------------------------------------------------------------------
 
@@ -64,19 +63,19 @@ function handleFormSubmitCard() {
 const popupProfile = new PopupWithForm(handleFormSubmitProfile, '.popup_profile');
 popupProfile.setEventListeners();
 
+const userInfo = new UserInfo( {nameSelector: '.profile__user-name',
+                                aboutSelector: '.profile__about-user'} );
+
 // Открытие попап профиля
 popupButtonEditElement.addEventListener('click', () => {
-  popupInputNameElement.value = profileNameElement.textContent;
-  popupInputJobElement.value = profileJobElement.textContent;
-  formValidationProfile.resetValidationState();
+  const user = userInfo.getInfo();
+  popupInputNameElement.value = user.name;
+  popupInputJobElement.value = user.about;
   popupProfile.openPopup()
 });
 
 //Функция сабмит профиля
 function handleFormSubmitProfile() {
-  profileNameElement.textContent = popupInputNameElement.value;
-  profileJobElement.textContent = popupInputJobElement.value;
+  userInfo.setUserInfo(popupInputNameElement.value, popupInputJobElement.value);
   popupProfile.closePopup();
 };
-
-

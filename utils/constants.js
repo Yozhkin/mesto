@@ -40,9 +40,6 @@ export const popupButtonAddElement = document.querySelector('.profile__add-butto
 // Формы
 export const formProfile = document.forms.popup_form_profile;
 export const formAddCard = document.forms.popup_form_addcard;
-//
-export const profileNameElement = document.querySelector('.profile__user-name');
-export const profileJobElement = document.querySelector('.profile__about-user');
 // Попап профиля
 const popupProfileElement = document.querySelector('.popup_profile');
 export const popupInputNameElement = popupProfileElement.querySelector('.popup__input_type_name');
