@@ -33,7 +33,7 @@ class Card {
     this._openPicturePopup(this._data);
   }
 
-  _setEventListener() {
+  _setEventListeners() {
     this._deleteButton.addEventListener('click', this._deleteCard);
     this._likeButton.addEventListener('click', this._toggleLike);
     this._elementPicture.addEventListener('click', this._handleOpenPicturePopup)
@@ -48,7 +48,7 @@ class Card {
     this._nameElement.textContent = this._data.name;
     this._elementPicture.src = this._link;
     this._elementPicture.alt = this._data.name;
-    this._setEventListener();
+    this._setEventListeners();
     return this._element;
   };
 };

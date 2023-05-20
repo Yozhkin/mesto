@@ -33,3 +33,21 @@ export const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error-message'
 };
+
+// Кнопки попап
+export const popupButtonEditElement = document.querySelector('.profile__edit-button');
+export const popupButtonAddElement = document.querySelector('.profile__add-button');
+// Формы
+export const formProfile = document.forms.popup_form_profile;
+export const formAddCard = document.forms.popup_form_addcard;
+//
+export const profileNameElement = document.querySelector('.profile__user-name');
+export const profileJobElement = document.querySelector('.profile__about-user');
+// Попап профиля
+const popupProfileElement = document.querySelector('.popup_profile');
+export const popupInputNameElement = popupProfileElement.querySelector('.popup__input_type_name');
+export const popupInputJobElement = popupProfileElement.querySelector('.popup__input_type_job');
+// Попап добавление фото
+const popupAddCardElement = document.querySelector('.popup_addcard');
+export const popupInputTitleCard = popupAddCardElement.querySelector('.popup__input_type_title');
+export const popupInputLinkCard = popupAddCardElement.querySelector('.popup__input_type_link');
