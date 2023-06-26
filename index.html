@@ -3,7 +3,7 @@
 <head>
   <title>Mesto</title>
   <meta charset="UTF-8">
-  <meta name="description" content="Проектная работа №8 Пузырева Алексея на Яндекс.Практикум">
+  <meta name="description" content="Проектная работа №9 Пузырева Алексея на Яндекс.Практикум">
   <meta name="keywords" content="html, css, JS">
   <meta name="author" content="Пузырев Алексей">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,9 @@
 
   <main class="main">
     <section class="profile">
-      <img class="profile__avatar" src="848bc2b9cafa308b40cd.svg" alt="Аватарка">
+      <button class="profile__avatar-btn button-hover" type="button" aria-label="Открыть" >
+        <img class="profile__avatar" src="848bc2b9cafa308b40cd.svg" alt="Аватарка">
+      </button>
       <div class="profile__info">
         <h1 class="profile__user-name">Жак-Ив Кусто</h1>
         <p class="profile__about-user">Исследователь океана</p>
@@ -65,7 +67,29 @@
     </div>
   </div>
 
-   <div class="popup popup_zoom">
+  <div class="popup popup_avatar">
+    <div class="popup__container">
+      <button id="close_btn_popup_avatar" class="popup__button-close button-hover" type="button"></button>
+      <form class="popup__form" rel="profile" name="form" id="popup_form_avatar" novalidate>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <input type="url" name="avatar_link" placeholder="Ссылка на картинку" id="avatar-url_input" class="popup__input_type_link popup__input" required>
+        <span class="popup__error-avatar-url" id="avatar-url_input-error" type="error"></span>
+        <button class="popup__button-save popup__button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_delCard">
+    <div class="popup__container">
+      <button id="close_btn_popup_delCard" class="popup__button-close button-hover" type="button"></button>
+      <form class="popup__form" rel="profile" name="form" id="popup_form_avatar" novalidate>
+        <h3 class="popup__title">Вы уверены?</h3>
+        <button class="popup__button-save popup__button" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_zoom">
     <div class="popup__container-zoom">
       <button id="close_btn_popup_zoom" class="popup__button-close button-hover" type="button"></button>
       <img class="popup__foto" src="#" alt="">
