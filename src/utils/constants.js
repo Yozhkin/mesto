@@ -37,9 +37,11 @@ export const validationConfig = {
 // Кнопки попап
 export const popupButtonEditElement = document.querySelector('.profile__edit-button');
 export const popupButtonAddElement = document.querySelector('.profile__add-button');
+export const popupButtonAvatarElement = document.querySelector('.profile__avatar-btn')
 // Формы
 export const formProfile = document.forms.popup_form_profile;
 export const formAddCard = document.forms.popup_form_addcard;
+export const formAvatar = document.forms.popup_form_avatar;
 // Попап профиля
 const popupProfileElement = document.querySelector('.popup_profile');
 export const popupInputNameElement = popupProfileElement.querySelector('.popup__input_type_name');

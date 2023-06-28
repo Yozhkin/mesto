@@ -1,9 +1,10 @@
 class Card {
-  constructor(data, templateCard, openPicturePopup) {
+  constructor(data, templateCard, openPicturePopup, openDelPopup) {
     this._data = data;
     this._link = data.link;
     this._templateCard = templateCard;
     this._openPicturePopup = openPicturePopup;
+    this._openDelPopup = openDelPopup
   };
 
   _getTemplate() {
@@ -33,8 +34,12 @@ class Card {
     this._openPicturePopup(this._data);
   }
 
+  _handleOpenDelPopup = () => {
+    this._openDelPopup(this)
+  }
+
   _setEventListeners() {
-    this._deleteButton.addEventListener('click', this._deleteCard);
+    this._deleteButton.addEventListener('click', this._handleOpenDelPopup);
     this._likeButton.addEventListener('click', this._toggleLike);
     this._elementPicture.addEventListener('click', this._handleOpenPicturePopup)
   };
