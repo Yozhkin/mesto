@@ -15,7 +15,8 @@ export default class PopupWithSubmit extends Popup {
 
   setEventListeners = () =>{
     super.setEventListeners();
-    this._deleteBtn.addEventListener('click', () => {
+    this._deleteBtn.addEventListener('click', (evt) => {
+      evt.preventDefault();
         this._handleSubmit(this._card)
     })
 }

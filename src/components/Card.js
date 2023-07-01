@@ -2,6 +2,8 @@ class Card {
   constructor(data, templateCard, openPicturePopup, openDelPopup) {
     this._data = data;
     this._link = data.link;
+    this._myId = data.myId;
+    this._ownerId = data.owner._id;
     this._templateCard = templateCard;
     this._openPicturePopup = openPicturePopup;
     this._openDelPopup = openDelPopup
@@ -16,7 +18,7 @@ class Card {
       return cardElement;
   };
 
-  _deleteCard = () => {
+  deleteCard = () => {
     this._element.remove();
     this._likeButton = null;
     this._deleteButton = null;
@@ -41,7 +43,8 @@ class Card {
   _setEventListeners() {
     this._deleteButton.addEventListener('click', this._handleOpenDelPopup);
     this._likeButton.addEventListener('click', this._toggleLike);
-    this._elementPicture.addEventListener('click', this._handleOpenPicturePopup)
+    this._elementPicture.addEventListener('click', this._handleOpenPicturePopup);
+
   };
 
   generateCard() {
@@ -54,6 +57,9 @@ class Card {
     this._elementPicture.src = this._link;
     this._elementPicture.alt = this._data.name;
     this._setEventListeners();
+    if (this._myId !== this._ownerId) {
+      this._deleteButton.style.display = 'none';
+  }
     return this._element;
   };
 };
