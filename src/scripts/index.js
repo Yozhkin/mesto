@@ -19,6 +19,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import Api from '../components/Api.js';
+import { data } from 'autoprefixer';
 
 //--------------------------------------------------------------------------------------
 
@@ -44,32 +45,28 @@ const popupImage = new PopupWithImage('.popup_zoom');
 popupImage.setEventListeners();
 
 // Экземпляр попап удаления карточки
-
 const popupWithSubmit = new PopupWithSubmit((card) => {
-  card.deleteCard();
-  popupWithSubmit.closePopup();
+  api.deleteCard(card._cardID)
+  .then(() =>
+    card.deleteCard(),
+    popupWithSubmit.closePopup()
+  )
+  .catch((err) => {
+    console.error(`Ошибка при удалении карточки: ${err}`)})
 }, '.popup_delCard');
 popupWithSubmit.setEventListeners();
 
-// Экземпляр Секции для карт(добавляем карты на страницу)
-// const section = new Section({
-//   items: initialCards,
-//   renderer: (data) => {
-//     const card = new Card(data, '#template-cards', popupImage.openPopupImage, popupWithSubmit.open);
-//     return card.generateCard();
-//   }
-// }, '.elements__container')
-
-// section.addCard();
-
-//--------------------------------------------------------------------------------------
-
-// Экземпляр "Попап карточек"
-const popupAddCard = new PopupWithForm(() => {
-  const card = { name: popupInputTitleCard.value, link: popupInputLinkCard.value };
-  section.addItem(section.renderer(card))
-  popupAddCard.closePopup();
-}, '.popup_addcard');
+// Экземпляр попап создание карточки
+const popupAddCard = new PopupWithForm((data) => {
+  Promise.all( [api.getInfo(), api.addCard(data.card_name, data.card_link)])
+  .then(([userData, cardData]) => {
+    cardData.myId = userData._id;
+    section.addItem(section.renderer(cardData))
+    popupAddCard.closePopup();
+  })
+  .catch((err) => {
+    console.error(`Ошибка при создании карточки: ${err}`)})
+}, '.popup_addcard')
 
 popupAddCard.setEventListeners();
 
@@ -108,10 +105,14 @@ popupButtonEditElement.addEventListener('click', () => {
 
 // Экземпляр "Попап Аватара"
 const popupAvatar = new PopupWithForm((data) => {
-    const avatarPic = document.querySelector('.profile__avatar');
-    avatarPic.src = data.avatar_link;
+  api.setAvatar(data.avatar_link)
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about, res.avatar);
     popupAvatar.closePopup();
-}, '.popup_avatar');
+  })
+  .catch((err) => {
+    console.error(`Ошибка редактирования Аватара: ${err}`)})
+}, '.popup_avatar')
 
 // Открытие "попап Аватар"
 popupButtonAvatarElement.addEventListener('click', () => {
@@ -121,19 +122,22 @@ popupButtonAvatarElement.addEventListener('click', () => {
 
 popupAvatar.setEventListeners();
 
+const section = new Section({
+  items: [],
+  renderer: (data) => {
+    const card = new Card(data, '#template-cards', popupImage.openPopupImage, popupWithSubmit.open);
+    // console.log(data)
+    return card.generateCard();
+  }
+}, '.elements__container')
+
+
 Promise.all([api.getInfo(), api.getCards()])
   .then(([userData, cardData]) => {
     cardData.forEach(element => {element.myId = userData._id})
-    userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
-    let section = new Section({
-      items: cardData.reverse(),
-      renderer: (data) => {
-        const card = new Card(data, '#template-cards', popupImage.openPopupImage, popupWithSubmit.open);
-        return card.generateCard();
-      }
-    }, '.elements__container')
-     section.addCard();
-    })
+    userInfo.setUserInfo(userData.name, userData.about, userData.avatar)
+    section.setItems(cardData.reverse());
+    section.addCard() })
     .catch((err) => {
       console.error(`Ошибка рендеринга карточек: ${err}`)})
 

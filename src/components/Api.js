@@ -34,7 +34,7 @@ export default class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({name, about})
+      body: JSON.stringify( {name, about} )
     })
     .then(res => this._checkServer(res))
   }
@@ -43,8 +43,25 @@ export default class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({avatar})
+      body: JSON.stringify( {avatar} )
     })
     .then(res => this._checkServer(res))
   }
+
+  addCard(name, link) {
+    return fetch(`${this._url}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify( {name, link} )
+    })
+    .then(res => this._checkServer(res))
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+        method: "DELETE",
+        headers: this._headers
+    })
+    .then(res => this._checkServer(res))
+}
 }

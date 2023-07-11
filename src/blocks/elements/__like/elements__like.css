@@ -1,4 +1,6 @@
 .elements__like {
+  position: relative;
+  margin-top: 22px;
   padding: 0;
   width: 22px;
   height: 19px;
@@ -7,9 +9,5 @@
   background-color: #fff;
   transition: opacity .4s ease-in;
   cursor: pointer;
-}
 
-.elements__like:hover {
-  opacity: .5;
 }
-
