@@ -19,5 +19,5 @@ export default class PopupWithSubmit extends Popup {
       evt.preventDefault();
         this._handleSubmit(this._card)
     })
-}
+  }
 }

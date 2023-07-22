@@ -1,0 +1,12 @@
+.popup__error-avatar-url {
+  position: absolute;
+  top: 150px;
+  left: 36px;
+}
+
+@media screen and (max-width: 760px) {
+  .popup__error-avatar-url {
+    top: 152px;
+    left: 22px;
+  }
+}

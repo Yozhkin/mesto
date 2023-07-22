@@ -83,7 +83,7 @@
     <div class="popup__container">
       <button id="close_btn_popup_delCard" class="popup__button-close button-hover" type="button"></button>
       <form class="popup__form" rel="profile" name="form" id="popup_form_avatar" novalidate>
-        <h3 class="popup__title">Вы уверены?</h3>
+        <h3 class="popup__title popup__title-del">Вы уверены?</h3>
         <button class="popup__button-del popup__button-submit popup__button" type="submit">Да</button>
       </form>
     </div>
@@ -102,9 +102,10 @@
       <img class="elements__foto" src="#" alt="">
       <div class="elements__block">
         <h3 class="elements__title"></h3>
-        <button class="elements__like" type="button">
+        <div class="elements__like-container">
+          <button class="elements__like" type="button"></button>
           <span class="elements__like-counter"></span>
-        </button>
+        </div>
         <button class="elements__del-btn" type="button"></button>
       </div>
     </li>

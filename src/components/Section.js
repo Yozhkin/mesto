@@ -17,8 +17,7 @@ export default class Section {
   }
 
   setItems(items) {
-    items.forEach((item) => items.push(item));
-    this._items = this._items.concat(items) 
+    this._items = this._items.concat(items)
   }
 }
 

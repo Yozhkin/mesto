@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, templateCard, openPicturePopup, openDelPopup) {
+  constructor(data, templateCard, openPicturePopup, openDelPopup, addLike, deleteLike) {
     this._data = data;
     this._link = data.link;
     this._myId = data.myId;
@@ -10,6 +10,9 @@ class Card {
     this._templateCard = templateCard;
     this._openPicturePopup = openPicturePopup;
     this._openDelPopup = openDelPopup;
+    this._addLike = addLike;
+    this._deleteLike = deleteLike
+    // console.log(this._likes)
   };
 
   _getTemplate() {
@@ -28,12 +31,21 @@ class Card {
     this._elementPicture = null;
     this._nameElement = null;
     this._element = null;
-
   };
+
+  _countLikes = (like) => {
+    this._likeCounter.textContent = like
+  }
 
   _toggleLike = () => {
     this._likeButton.classList.toggle('elemetns__like_added');
-  };
+    if (this._likeButton.classList.contains('elemetns__like_added')) {
+        this._addLike(this._cardID, this._countLikes)
+    }
+    else {
+      this._deleteLike(this._cardID, this._countLikes)
+    }
+  }
 
   _handleOpenPicturePopup = () => {
     this._openPicturePopup(this._data);
@@ -60,9 +72,9 @@ class Card {
     this._likes.forEach((user) => {
       if (user._id === this._myId) {
           this._toggleLike();
-      } else {
-        // this._toggleLike();
-        }
+       } // } else {
+      //   // this._toggleLike();
+      //   }
       })
     this._likeCounter.textContent = this._likesLength
   }
@@ -74,6 +86,7 @@ class Card {
     this._deleteButton = this._element.querySelector('.elements__del-btn');
     this._likeButton = this._element.querySelector('.elements__like');
     this._likeCounter = this._element.querySelector('.elements__like-counter');
+    this._likeIcon = document.querySelector('.elemetns__like_added');
     this._nameElement.textContent = this._data.name;
     this._elementPicture.src = this._link;
     this._elementPicture.alt = this._data.name;

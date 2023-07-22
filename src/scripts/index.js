@@ -1,5 +1,5 @@
 import '../pages/index.css'
-import { initialCards,
+import { // initialCards,
          popupButtonAddElement,
          popupButtonEditElement,
          popupButtonAvatarElement,
@@ -8,8 +8,9 @@ import { initialCards,
          formAvatar,
          popupInputJobElement,
          popupInputNameElement,
-         popupInputLinkCard,
-         popupInputTitleCard } from '../utils/constants.js';
+        // popupInputLinkCard,
+        // popupInputTitleCard
+        } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
 import { FormValidator, validationConfig } from '../components/FormValidator.js';
@@ -56,8 +57,9 @@ const popupWithSubmit = new PopupWithSubmit((card) => {
 }, '.popup_delCard');
 popupWithSubmit.setEventListeners();
 
-// Экземпляр попап создание карточки
+// Экземпляр попап создание карточки (отправка карточки на сервер)
 const popupAddCard = new PopupWithForm((data) => {
+  popupAddCard.changeButtonText('Сохранение...')
   Promise.all( [api.getInfo(), api.addCard(data.card_name, data.card_link)])
   .then(([userData, cardData]) => {
     cardData.myId = userData._id;
@@ -66,6 +68,9 @@ const popupAddCard = new PopupWithForm((data) => {
   })
   .catch((err) => {
     console.error(`Ошибка при создании карточки: ${err}`)})
+  .finally(() => {
+    popupAddCard.changeButtonText('Создать')
+  })
 }, '.popup_addcard')
 
 popupAddCard.setEventListeners();
@@ -76,10 +81,9 @@ popupButtonAddElement.addEventListener('click', () => {
   popupAddCard.openPopup();
 });
 
-//--------------------------------------------------------------------------------------
-
 // Экземпляр "Попап профиля"
 const popupProfile = new PopupWithForm((data) => {
+  popupProfile.changeButtonText('Сохранение...')
   api.setUserInfo(data.name, data.about)
   .then((res) => {
     userInfo.setUserInfo(res.name, res.about, res.avatar);
@@ -87,6 +91,9 @@ const popupProfile = new PopupWithForm((data) => {
   })
   .catch((err) => {
     console.error(`Ошибка редактирования профиля: ${err}`)})
+  .finally(() => {
+    popupProfile.changeButtonText('Сохранить')
+  })
 }, '.popup_profile')
 
 popupProfile.setEventListeners();
@@ -105,6 +112,7 @@ popupButtonEditElement.addEventListener('click', () => {
 
 // Экземпляр "Попап Аватара"
 const popupAvatar = new PopupWithForm((data) => {
+  popupAvatar.changeButtonText('Сохранение...')
   api.setAvatar(data.avatar_link)
   .then((res) => {
     userInfo.setUserInfo(res.name, res.about, res.avatar);
@@ -112,6 +120,8 @@ const popupAvatar = new PopupWithForm((data) => {
   })
   .catch((err) => {
     console.error(`Ошибка редактирования Аватара: ${err}`)})
+  .finally(() => {
+     popupAvatar.changeButtonText('Сохранить')})
 }, '.popup_avatar')
 
 // Открытие "попап Аватар"
@@ -119,19 +129,39 @@ popupButtonAvatarElement.addEventListener('click', () => {
   formValidationAvatar.resetValidationState();
   popupAvatar.openPopup();
 });
-
 popupAvatar.setEventListeners();
 
+// Установка лайка
+const addLike = (cardId, countLikes) => {
+  api.addLikeCard(cardId)
+    .then((res) => {
+      countLikes(res.likes.length);
+    })
+    .catch((err) => {
+      console.error(`Ошибка установки лайка: ${err}`)})
+};
+
+// Удаление лайка
+const delLike = (cardId, countLikes) => {
+  api.delLikeCard(cardId)
+    .then((res) => {
+      countLikes(res.likes.length);
+    })
+    .catch((err) => {
+      console.error(`Ошибка снятия лайка: ${err}`)})
+};
+
+// Экземпляр карточки
 const section = new Section({
   items: [],
   renderer: (data) => {
-    const card = new Card(data, '#template-cards', popupImage.openPopupImage, popupWithSubmit.open);
+    const card = new Card(data, '#template-cards', popupImage.openPopupImage, popupWithSubmit.open, addLike, delLike);
     // console.log(data)
     return card.generateCard();
   }
 }, '.elements__container')
 
-
+//Рендеринг карточек с сервера
 Promise.all([api.getInfo(), api.getCards()])
   .then(([userData, cardData]) => {
     cardData.forEach(element => {element.myId = userData._id})
