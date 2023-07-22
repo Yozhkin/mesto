@@ -19,11 +19,11 @@
   <main class="main">
     <section class="profile">
       <button class="profile__avatar-btn button-hover" type="button" aria-label="Открыть" >
-        <img class="profile__avatar"  src="848bc2b9cafa308b40cd.svg" alt="Аватарка">
+        <img class="profile__avatar"  src="#" alt="Аватарка">
       </button>
       <div class="profile__info">
-        <h1 class="profile__user-name">Жак-Ив Кусто</h1>
-        <p class="profile__about-user">Исследователь океана</p>
+        <h1 class="profile__user-name"></h1>
+        <p class="profile__about-user"></p>
       </div>
       <button class="profile__edit-button button-hover" type="button" aria-label="Открыть" ></button>
       <button class="profile__add-button button-hover" type="button" aria-label="Добавить"></button>
@@ -58,7 +58,7 @@
       <button id="close_btn_popup_addcard" class="popup__button-close button-hover" type="button"></button>
       <form class="popup__form" rel="profile" name="form" id="popup_form_addcard" novalidate>
         <h3 class="popup__title">Новое место</h3>
-        <input type="text" name="card-name" placeholder="Название" id="card-name_input" class="popup__input_type_title popup__input" minlength="2" maxlength="30" required>
+        <input type="text" name="card_name" placeholder="Название" id="card-name_input" class="popup__input_type_title popup__input" minlength="2" maxlength="30" required>
         <span class="popup__error-card-name" id="card-name_input-error" type="error"></span>
         <input type="url" name="card_link" placeholder="Ссылка на картинку" id="card-url_input" class="popup__input_type_link popup__input" required>
         <span class="popup__error-card-url" id="card-url_input-error" type="error"></span>
@@ -83,7 +83,7 @@
     <div class="popup__container">
       <button id="close_btn_popup_delCard" class="popup__button-close button-hover" type="button"></button>
       <form class="popup__form" rel="profile" name="form" id="popup_form_avatar" novalidate>
-        <h3 class="popup__title">Вы уверены?</h3>
+        <h3 class="popup__title popup__title-del">Вы уверены?</h3>
         <button class="popup__button-del popup__button-submit popup__button" type="submit">Да</button>
       </form>
     </div>
@@ -102,7 +102,10 @@
       <img class="elements__foto" src="#" alt="">
       <div class="elements__block">
         <h3 class="elements__title"></h3>
-        <button class="elements__like" type="button"></button>
+        <div class="elements__like-container">
+          <button class="elements__like" type="button"></button>
+          <span class="elements__like-counter"></span>
+        </div>
         <button class="elements__del-btn" type="button"></button>
       </div>
     </li>
