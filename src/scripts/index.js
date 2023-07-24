@@ -26,9 +26,9 @@ import { data } from 'autoprefixer';
 
 // Экземпляр "Api"
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-72',
   headers: {
-    authorization: '643fbfe1-a52c-4c09-bf79-291897cbae22',
+    authorization: '0be9c7b8-c488-404c-bbf1-4af9ede5f800',
     'Content-Type': 'application/json'
   }
 })
