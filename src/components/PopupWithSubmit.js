@@ -7,8 +7,8 @@ export default class PopupWithSubmit extends Popup {
     this._deleteBtn = document.querySelector('.popup__button-del')
   }
 
-  open = (card) => {
-    this._card = card;
+  open = (item) => {
+    this._card = item;
     super.openPopup();
 
 }

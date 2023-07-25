@@ -1,8 +1,8 @@
 class Card {
-  constructor(data, templateCard, openPicturePopup, openDelPopup, addLike, deleteLike) {
+  constructor(data, templateCard, myId, openPicturePopup, openDelPopup, addLike, deleteLike) {
     this._data = data;
     this._link = data.link;
-    this._myId = data.myId;
+    this._myId = myId;
     this._likes = data.likes;
     this._likesLength = data.likes.length;
     this._cardID = data._id;
@@ -37,13 +37,15 @@ class Card {
     this._likeCounter.textContent = like
   }
 
+  _changeLike = () => {
+    this._likeButton.classList.toggle('elemetns__like_added')}
+
   _toggleLike = () => {
-    this._likeButton.classList.toggle('elemetns__like_added');
     if (this._likeButton.classList.contains('elemetns__like_added')) {
-        this._addLike(this._cardID, this._countLikes)
+      this._deleteLike(this._cardID, this._countLikes, this._changeLike)
     }
     else {
-      this._deleteLike(this._cardID, this._countLikes)
+      this._addLike(this._cardID, this._countLikes, this._changeLike)
     }
   }
 
@@ -61,7 +63,7 @@ class Card {
     this._elementPicture.addEventListener('click', this._handleOpenPicturePopup);
   };
 
-  _isOwner() {
+  _hideDeleteButtonIfNotOwner() {
     if (this._myId !== this._ownerId) {
         this._deleteButton.remove();
         this._deleteButton = null;
@@ -86,12 +88,11 @@ class Card {
     this._deleteButton = this._element.querySelector('.elements__del-btn');
     this._likeButton = this._element.querySelector('.elements__like');
     this._likeCounter = this._element.querySelector('.elements__like-counter');
-    this._likeIcon = document.querySelector('.elemetns__like_added');
     this._nameElement.textContent = this._data.name;
     this._elementPicture.src = this._link;
     this._elementPicture.alt = this._data.name;
     this._setEventListeners();
-    this._isOwner();
+    this._hideDeleteButtonIfNotOwner();
     this._isLiked();
     return this._element;
   };
