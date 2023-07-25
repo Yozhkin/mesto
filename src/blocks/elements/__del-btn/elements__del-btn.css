@@ -10,6 +10,8 @@
   background-color: transparent;
   transition: opacity .4s ease-in;
   cursor: pointer;
+  /* Я бы добавил тень кнопке, что бы она была видна на блом фоне, но кто я такой, чтобы перечить дизайнеру */
+  /* filter: drop-shadow(1px 1px 1px #4444dd); */
 }
 
 .elements__del-btn:hover {
