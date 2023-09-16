@@ -63,7 +63,7 @@ popupWithSubmit.setEventListeners();
 // Экземпляр попап создание карточки (отправка карточки на сервер)
 const popupAddCard = new PopupWithForm((data) => {
   popupAddCard.changeButtonText('Сохранение...')
-  // Promise.all( [api.getInfo(), api.addCard(data.card_name, data.card_link)])
+
   api.addCard(data.card_name, data.card_link)
   .then((cardData) => {
     cardData.myId = myId;
